@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    fetch("http://api.open-notify.org/astros.json")
+    .then((res) => res.json())
+    // .then((json) => json.people)
+    // .then((people) => people.map((p) => p.name))
+    // .then((names) => names.join(", "))
+    .then(console.log)
+
+    //or
+    let getSpacePeople = () => fetch("http://api.open-notify.org/astros.json")
+    .then((res) => res.json());
+
+    let SpaceNames = () => 
+        getSpacePeople()
+        .then((json) => json.people)
+        .then((people) => people.map((p) => p.name))
+        .then((names) => names.join(", "))
+
+    SpaceNames().then(console.log)
+   
+</script>
+</html>
