@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+    direction: rtl;
+    background: linear-gradient(to right, rgb(226, 212, 212), rgb(248, 176, 137));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+}
+.SuccessLogin{
+    background: rgb(182, 180, 180);
+    box-shadow: 0 5px 10px gray;
+    padding: 5px 30px;
+}
+</style>
+<body onload="init()">
+    <div class="SuccessLogin">
+        <h1 id="data"></h1>
+    </div>
+</body>
+<script>
+    function init(){
+        let token = localStorage.getItem("token")
+        if (token === "QpwL5tke4Pnpja7X4"){
+            document.getElementById("data").innerHTML = "تم تسجيل دخولك بنجاح"
+        }else{
+            document.getElementById("data").innerHTML = "قم بالتسجيل من فضلك"
+        }
+    }
+    
+</script>
+</html>

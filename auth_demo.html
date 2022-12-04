@@ -7,14 +7,61 @@
     <title>Document</title>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </head>
+<style>
+body{
+    direction: rtl;
+    background: linear-gradient(to right, white, lightblue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+}
+.loginWindow{
+    background: rgb(174, 173, 173);
+    padding: 20px;
+    box-shadow: 0 5px 10px gray;
+}
+.loginWindow button{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 2px 20px;
+    cursor: pointer;
+}
+</style>
 <body>
     <div class="loginWindow">
         <h2>تسجيل الدخول</h2>
         <hr>
         <h3>الإيميل</h3>
-        <input type="text" id="email">
+        <input type="email" id="email" autofocus>
         <h3>كلمة السر</h3>
-        <input type="text" id="password">
+        <input type="password" id="password">
+        <div>
+            <button onclick="Submit()">تسجيل دخول</button>
+        </div>
+        
     </div>
 </body>
+<script>
+    localStorage.setItem("token", "")
+    function Submit(){
+        let email = document.getElementById("email").value;
+        let pwd = document.getElementById("password").value;
+        axios.post('https://reqres.in/api/login', {
+            "email": email,
+            "password": pwd
+        })
+        .then(function (response) {
+            let token = response.data.token
+            localStorage.setItem("token", token)
+            // window.open("auth_demo2.html", "_self").
+            window.location = "LoginSuccess.html"
+        })
+        .catch(function (error) {
+            console.log(error)
+            alert(error.response.data.error)
+        });
+    }
+</script>
 </html>
